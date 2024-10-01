@@ -1,0 +1,29 @@
+services:
+  nestapp:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file: 
+      - .env.development  
+    depends_on:
+      - postgresdb
+    networks:
+      - app-network
+
+  postgresdb:
+    image: postgres:14
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - .env.development
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge
