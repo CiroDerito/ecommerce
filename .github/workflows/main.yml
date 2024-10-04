@@ -32,3 +32,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tag: ${{ secrets.DOCKERHUB_USERNAME }}/Ecommerce:latest
+          
